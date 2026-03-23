@@ -364,6 +364,29 @@ python -m pytest tests/test_terra_core.py -v
 
 ---
 
+## Grand Unified Loop 연결
+
+TerraCore는 StarCraft의 Grand Unified Loop 중 **물질 순환층**을 담당한다.
+
+```
+FusionCore (에너지)  →  TerraCore (물질 순환)  →  neuro_engine (인지 제어)
+      ↑                       │                          │
+      └──── H₂ 피드백 ←────────┘         Ω_terra + O₂_health 신호 주입
+                                              ↓ Wilson-Cowan 발화율
+                                         OsCommand → StarCraft OS
+```
+
+| 신호 | 방향 | 의미 |
+|------|------|------|
+| `P_elec` [MW] | FusionCore → TerraCore | 전기분해 전력 |
+| `o2_rate_mol_s` | TerraCore → AgedCare | 승무원 산소 |
+| `omega_terra` [0,1] | TerraCore → neuro | 생명유지 건강도 뉴런 입력 |
+| `h2_mol` [장기 예정] | TerraCore → FusionCore | 수소 연료 피드백 |
+
+자세한 내용: [StarCraft/GRAND_LOOP.md](https://github.com/qquartsco-svg/StarCraft/blob/main/GRAND_LOOP.md)
+
+---
+
 ## 연계 레포
 
 | 레포 | 관계 |
